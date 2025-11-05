@@ -4,6 +4,141 @@
     max-width: 120rem;
     margin: 0 auto;
 }
+
+.carrito{
+    padding:2rem 0;
+}
+
+/* Grid del contenedor principal */
+.carrito-grid{
+  display: grid;
+  grid-template-areas:
+    "title"
+    "box";
+  row-gap: 2rem;
+  padding: 2rem 0;
+}
+
+/* Título centrado */
+.carrito-title{
+  grid-area: title;
+  text-align: center;
+  margin: 2rem 0;
+  /* si querés: font-size lo manejás con tu escala global */
+}
+
+/* Caja principal como grid (tabla + mensaje vacío) */
+.carrito-grid-box{
+  grid-area: box;
+  display: grid;
+  grid-template-areas:
+    "table"
+    "empty";
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+
+
+/* encabezados y celdas iguales que antes */
+.cart-table th,
+.cart-table td{
+  padding: .75rem 1rem;
+  font-size: 1.25rem;
+  vertical-align: middle;
+}
+
+
+/* Celdas base */
+.cart-table th,
+.cart-table td{
+  padding: .75rem 1rem;
+  font-size: 1.25rem; /* mayor que el resto del sitio, como tenías */
+  align-self: center;
+}
+
+/* Encabezados */
+.cart-table th{
+  font-weight: 700;
+}
+
+/* Total (pie) */
+.cart-total-label{
+  font-weight: 700;
+}
+.cart-total{
+  font-weight: 700;
+}
+
+/* Mensaje de carrito vacío (segunda área del grid) */
+.cart-empty{
+  grid-area: empty;
+  text-align: center;
+  margin-top: 1rem;
+  display: none; /* el JS ya lo muestra/oculta */
+}
+
+/* Utilidades de alineación (reusadas) */
+.r{ text-align: right; }
+.c{ text-align: center; }
+.l{ text-align: left; }
+
+
+.carrito h2{
+    text-align:center; 
+    margin:2rem 0;
+}
+
+.carrito-box{
+    display: flex;
+    width: 100%;
+    max-width:820px; 
+    margin:0 auto; 
+    background:#fff; 
+    border-radius:1rem; 
+    padding:2rem; 
+    box-shadow:0 2px 8px rgba(0,0,0,.06);
+    align-items: center;
+    justify-content: center;
+}
+
+.carrito-box table,
+.cart-table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+
+.carrito-box table thead tr{
+    padding:.75rem 1rem; 
+    font-weight:700;
+}
+
+.carrito-box table thead tr th{
+    padding:.75rem 1rem; 
+    font-weight:700;
+}
+
+.carrito-box table tfoot tr td{
+    padding:1rem 1rem; 
+    font-weight:700;
+}
+
+.r{
+    text-align:right;
+}
+.c{
+    text-align:center;
+}
+.l{
+    text-align:left;
+}
+
 .heading-1{
     font-size: 3rem;
     font-weight: 500;
@@ -247,6 +382,7 @@
 .content-shopping-cart{
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
 
 /*buscador*/
@@ -724,4 +860,36 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+.ubicacion{
+    margin: 4rem 0;
+}
+
+.ubicacion div{
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 2rem;
+}
+
+.ubicacion div iframe{
+    width: 400px; 
+    height: 300px; 
+    border-radius: 1rem; 
+    border: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.ubicacion div a {
+    display: inline-block;
+}
+
+.ubicacion div a img{
+    width: 56px; 
+    height: 56px; 
+    border-radius: 1rem; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07); 
+    background: #d8b97f; 
+    padding: 8px;
 }

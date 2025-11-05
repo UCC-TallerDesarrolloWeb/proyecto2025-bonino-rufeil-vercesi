@@ -12,6 +12,15 @@
   <meta name="keywords" content="hamburguesas, menú, clásica, doble, triple" />
 </head>
 
+<script type="module">
+  import { handleAddToCart } from './cart.js';
+  import './search.js';
+
+  // exponer la función al scope global para que la vean los onsubmit del HTML
+  window.handleAddToCart = handleAddToCart;
+</script>
+
+
 <body>
     <!-- HEADER IGUAL Q EN LOS OTROS -->
     
@@ -28,13 +37,13 @@
 
         <div class="container-logo">
           <img src="img/hamburguer.png" alt="Logo empresa" />
-          <h1 class="logo"><a href="index.html">La Mistica</a></h1>
+          <h1 class="logo"><a href="index1.html">La Mistica</a></h1>
         </div>
 
         <div class="container-user">
           <img src="img/user.png" alt="Usuario" />
 
-          <div class="content-shopping-cart" onclick="location.href='carrito.html'" role="link" tabindex="0">
+          <div class="content-shopping-cart" onclick="location.href='carrito1.html'" role="link" tabindex="0">
             <img src="img/shopping-cart.png" alt="Carrito de compras" />
             <span class="text">Carrito</span>
             <span class="number-products" aria-live="polite">0</span>
@@ -48,14 +57,14 @@
         <img src="img/menu.png" alt="Abrir menú" />
 
       <ul class="menu">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="menu.html" aria-current="page">Hamburguesas</a></li>
-        <li><a href="sucursales.html">Dónde encontrarnos</a></li>
+        <li><a href="index1.html">Inicio</a></li>
+        <li><a href="menu1.html" aria-current="page">Hamburguesas</a></li>
+        <li><a href="sucursales1.html">Dónde encontrarnos</a></li>
       </ul>
 
       <form class="search-form">
 
-        <input type="search" placeholder="Buscar..."/>
+      <input type="search" placeholder="Buscar..."/>
     <button class="btn-search">
       <img src="img/lupa.png" alt="Buscar" />
     </button>
@@ -230,10 +239,9 @@
 
   <!-- IMPORTAR FUNCIONES SEARCH Y HANDLE CAR -->
 
-  <script type="module">
-  import { handleAddToCart, updateCartBubble } from './cart.js';
-  import { handleSearchNavigation } from './search.js';
-</script>
+  
+
+
 
 
 </body>

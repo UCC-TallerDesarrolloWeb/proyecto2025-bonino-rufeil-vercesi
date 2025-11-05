@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carrito – La Mística</title>
+  <link rel="stylesheet" href="styles1.css"/>
+  <meta name="author" content="Joaquin Bonino, Demetrio Rufeil, Santino Vercesi" />
+  <meta name="description" content="Menú de hamburguesas clásicas, dobles y triples." />
+  <meta name="keywords" content="hamburguesas, menú, clásica, doble, triple" />
+</head>
+
+<script type="module">
+  import { renderCartTable } from './cart.js';
+    import './search.js';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    renderCartTable();
+  });
+</script>
+
+
+
+<body>
+    <!-- HEADER IGUAL EN TODOS LADOS -->
+
+    <header>
+    <div class="container-hero">
+      <div class="container hero">
+        <div class="customer-support">
+            <img class="icon-headset" src="img/auriculares-con-microfono.png" alt="Soporte al cliente" />
+            <div class="content-customer-support">
+            <span class="text">Soporte al cliente</span>
+            <span class="number">+351-567-0876</span>
+          </div>
+        </div>
+
+        <div class="container-logo">
+          <img src="img/hamburguer.png" alt="Logo empresa" />
+          <h1 class="logo"><a href="index.html">La Mistica</a></h1>
+        </div>
+
+        <div class="container-user">
+          <img src="img/user.png" alt="Usuario" />
+
+          <div class="content-shopping-cart">
+            <img src="img/shopping-cart.png" alt="Carrito de compras" />
+            <span class="text">Carrito</span>
+            <span class="number-products" aria-live="polite">0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="container-navbar">
+        <nav class="navbar container">
+        <img src="img/menu.png" alt="Abrir menú" />
+
+      <ul class="menu">
+        <li><a href="index1.html">Inicio</a></li>
+        <li><a href="menu1.html" aria-current="page">Hamburguesas</a></li>
+        <li><a href="sucursales1.html">Dónde encontrarnos</a></li>
+      </ul>
+
+      <form class="search-form">
+
+        <input type="search" placeholder="Buscar..."/>
+    <button class="btn-search">
+      <img src="img/lupa.png" alt="Buscar" />
+    </button>
+      </form>
+    </div>
+  </header>
+
+  <!-- FIN DEL HEADER -->
+
+  <!-- MAIN -->
+
+  <main class="container carrito carrito-grid">
+  <h2 class="carrito-title">Tu Orden</h2>
+
+  <section id="cart-box" class="carrito-box carrito-grid-box">
+    <table id="cart-table" class="cart-table">
+      <thead>
+        <tr>
+          <th class="l">Tipo</th>
+          <th class="c">Cantidad</th>
+          <th class="r">Precio</th>
+        </tr>
+      </thead>
+      <tbody id="cart-tbody" class>
+        <!-- filas dinámicas -->
+      </tbody>
+      <tfoot>
+        <tr>
+          <td class="l cart-total-label">Total</td>
+          <td></td>
+          <td id="cart-total" class="r cart-total">0</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <p id="cart-empty" class="cart-empty">Tu carrito está vacío.</p>
+  </section>
+</main>
+
+
+
+  <!-- MAIN -->
+   <!--
+    <main class="container carrito">
+    <h2>Tu Orden</h2>
+    <section id="cart-box carrito-box">
+        <table id="cart-table">
+        <thead>
+            <tr>
+            <th class="r">Tipo</th>
+            <th class="c">Cantidad</th>
+            <th class="l">Precio</th>
+            </tr>
+        </thead>
+        <tbody id="cart-tbody">
+            
+        </tbody>
+        <tfoot>
+            <tr>
+            <td>Total</td>
+            <td></td>
+            <td id="cart-total" class="r">0</td>
+            </tr>
+        </tfoot>
+        </table>
+        <p id="cart-empty" style="display:none; text-align:center; margin:1rem 0 0 0;">Tu carrito está vacío.</p>
+    </section>
+    -->
+
+    </main>
+
+
+  <!-- FIN DEL MAIN -->
+
+
+</body>
