@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 /*utilidades*/
 .container {/*para centrar*/
@@ -647,7 +648,6 @@
     text-decoration: none;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 :root {
     --primary-color: #d8b97f;
     --secondary-color: #8f7e46;

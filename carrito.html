@@ -11,7 +11,6 @@
 </head>
 <body>
 
-  <!-- pega aquí el MISMO <header> que ya tenés en menu.html/sucursales.html, sin cambiar nada -->
     <header>
     <div class="container-hero">
       <div class="container hero">
@@ -59,7 +58,6 @@
       </form>
     </div>
   </header>
-  <!-- (desde <header class="header"> hasta el </header>) -->
 
     <main class="container" style="padding:2rem 0;">
     <h2 style="text-align:center; margin:2rem 0;">Tu Orden</h2>
@@ -88,7 +86,6 @@
     </main>
 
 
-  <!-- este script solo actualiza la burbuja del carrito al cargar -->
   <script>
     document.addEventListener('DOMContentLoaded', function(){
       try{
@@ -102,7 +99,6 @@
   </script>
 
   <script>
-  // util: formato con miles estilo es-AR (13.500)
   function fmt(n){ try{ return new Intl.NumberFormat('es-AR').format(n); }catch(_){ return n; } }
 
   // agrupa por nombre sumando cantidades (conserva precio unitario del ítem)
@@ -170,7 +166,6 @@
 
     totalEl.textContent = fmt(total);
 
-    // también repinto la burbuja del header
     var badge = document.querySelector('.number-products');
     if(badge){
       var totalQty = items.reduce(function(acc, x){ return acc + (Number(x.qty)||0); }, 0);
@@ -184,7 +179,7 @@
 <style>
   #cart-box table th,
   #cart-box table td {
-    font-size: 1.25rem; /* más grande que el resto del sitio */
+    font-size: 1.25rem; 
   }
 
   #cart-box h2,

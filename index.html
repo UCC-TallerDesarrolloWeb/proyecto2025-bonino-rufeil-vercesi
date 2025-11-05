@@ -33,10 +33,12 @@
         <div class="container-user">
           <img src="img/user.png" alt="Usuario" />
 
-          <div class="content-shopping-cart" onclick="location.href='carrito.html'" role="link" tabindex="0" style="cursor:pointer;">
-            <img src="img/shopping-cart.png" alt="Carrito de compras" />
-            <span class="text">Carrito</span>
-            <span class="number-products" aria-live="polite">0</span>
+          <div class="content-shopping-cart">
+            <div class="content-shopping-cart" onclick="location.href='carrito.html'" role="link" tabindex="0" style="cursor:pointer;">
+              <img src="img/shopping-cart.png" alt="Carrito de compras" />
+              <span class="text">Carrito</span>
+              <span class="number-products" aria-live="polite">0</span>
+            </div>
           </div>
         </div>
       </div>
@@ -106,10 +108,6 @@
       </div>
     </section>
 
-    
-
-
-
     <section class="container top-categories">
       <h1 class="heading-1">Categorías principales</h1>
       <div class="container-categories">
@@ -128,28 +126,20 @@
       </div>
     </section>
 
-
-
-
-
-
-
     <section class="top-products">
       <h1 class="heading-1">Lo más popular</h1>
       <div class="container-top-products">
         <input type="checkbox" id="modal-mistica-index" class="modal-toggle" hidden>
-
         <label for="modal-mistica-index" class="card-category product-mistica" style="cursor:pointer;">
           <p>Mistica</p>
         </label>
-
         <div class="modal-producto" id="modal-mistica-index-content">
           <div class="modal-box">
             <label for="modal-mistica-index" class="modal-close">×</label>
             <img src="img/hamburguesadoble.png" alt="Hamburguesa Mistica" style="width:260px; border-radius:1rem; margin-bottom:2rem; display:block;">
             <h3>Mistica</h3>
             <p>Precio: $14.000</p>
-            <form method="post" action="#" style="margin-top:1rem;" onsubmit="return handleAddToCart('Mistica', 14000, 'cantidad-mistica-index-modal')">
+            <form method="post" action="#" style="margin-top:1rem;">
               <label for="cantidad-mistica-index-modal">Cantidad:</label>
               <input type="number" id="cantidad-mistica-index-modal" name="cantidad-mistica-index-modal" min="1" max="10" value="1" size="2">
               <button type="submit" style="margin-left:1rem; padding:0.5rem 2rem; background:var(--secondary-color); color:#fff; border:none; border-radius:1rem; font-size:1rem; cursor:pointer;">Añadir al carrito</button>
@@ -167,7 +157,7 @@
             <img src="img/hamburguesatriple.png" alt="Hamburguesa Barbecue" style="width:260px; border-radius:1rem; margin-bottom:2rem; display:block;">
             <h3>Barbecue</h3>
             <p>Precio: $14.500</p>
-            <form method="post" action="#" style="margin-top:1rem;" onsubmit="return handleAddToCart('Barbecue', 14500, 'cantidad-barbecue-index-modal')">
+            <form method="post" action="#" style="margin-top:1rem;">
               <label for="cantidad-barbecue-index-modal">Cantidad:</label>
               <input type="number" id="cantidad-barbecue-index-modal" name="cantidad-barbecue-index-modal" min="1" max="10" value="1" size="2">
               <button type="submit" style="margin-left:1rem; padding:0.5rem 2rem; background:var(--secondary-color); color:#fff; border:none; border-radius:1rem; font-size:1rem; cursor:pointer;">Añadir al carrito</button>
@@ -185,7 +175,7 @@
             <img src="img/hamburguesatriple.png" alt="Hamburguesa Cheddar" style="width:260px; border-radius:1rem; margin-bottom:2rem; display:block;">
             <h3>Cheddar</h3>
             <p>Precio: $14.500</p>
-            <form method="post" action="#" style="margin-top:1rem;" onsubmit="return handleAddToCart('Cheddar', 14500, 'cantidad-cheddar-index-modal')">
+            <form method="post" action="#" style="margin-top:1rem;">
               <label for="cantidad-cheddar-index-modal">Cantidad:</label>
               <input type="number" id="cantidad-cheddar-index-modal" name="cantidad-cheddar-index-modal" min="1" max="10" value="1" size="2">
               <button type="submit" style="margin-left:1rem; padding:0.5rem 2rem; background:var(--secondary-color); color:#fff; border:none; border-radius:1rem; font-size:1rem; cursor:pointer;">Añadir al carrito</button>
@@ -206,41 +196,6 @@
   <footer>
     <p>© 2025 La Mistica.</p>
   </footer>
-
-  <script>
-    function handleAddToCart(productName, productPrice, qtyInputId){
-      try{
-        var qtyEl = document.getElementById(qtyInputId);
-        var qty = parseInt(qtyEl && qtyEl.value ? qtyEl.value : '1', 10);
-        if(isNaN(qty) || qty < 1) qty = 1;
-        var cart = [];
-        try{ cart = JSON.parse(localStorage.getItem('cart') || '[]'); }catch(e){ cart = []; }
-        cart.push({ name: productName, price: productPrice, qty: qty });
-        localStorage.setItem('cart', JSON.stringify(cart));
-        var totalQty = 0;
-        for(var i=0;i<cart.length;i++){ totalQty += (parseInt(cart[i].qty,10)||0); }
-        var badge = document.querySelector('.number-products');
-        if(badge){ badge.textContent = totalQty; }
-        alert(productName + ' x' + qty + ' añadido al carrito');
-      }catch(err){
-        alert('No se pudo añadir al carrito.');
-      }
-      return false; // evita submit real
-    }
-
-    document.addEventListener('DOMContentLoaded', function(){
-      // pintar burbuja del carrito al cargar
-      try{
-        var cart = JSON.parse(localStorage.getItem('cart') || '[]');
-        var totalQty = 0;
-        for(var i=0;i<cart.length;i++){ totalQty += (parseInt(cart[i].qty,10)||0); }
-        var badge = document.querySelector('.number-products');
-        if(badge){ badge.textContent = totalQty; }
-      }catch(e){}
-    });
-  </script>
-
-
 </body>
 <script>
 // Buscador inteligente
