@@ -1,4 +1,6 @@
-import "./navbar.css";
+// Navbar.jsx
+import "./styles2.css";
+import { Link } from "react-router-dom";
 import hamburguer from "../assets/hamburguer.png";
 import menu from "../assets/menu.png";  
 import auriculares from "../assets/auriculares-con-microfono.png";
@@ -8,10 +10,10 @@ import lupa from "../assets/lupa.png";
 
 export default function Navbar() {
   return (
-    <header className="lm-header">
-      {/* barra superior (soporte, logo, usuario) */}
+    <header>
       <div className="container-hero">
-        
+        <div className="container hero">
+          {/* soporte al cliente */}
           <div className="customer-support">
             <img
               className="icon-headset"
@@ -24,51 +26,55 @@ export default function Navbar() {
             </div>
           </div>
 
+          {/* logo */}
           <div className="container-logo">
             <img src={hamburguer} alt="Logo empresa" />
-            <div className="logo">
-                <h1>
-                    <a href="/">La Mistica</a>
-                </h1>
-            </div>
-            
+            <h1 className="logo">
+              <Link to="/menu">La mistica</Link>
+            </h1>
           </div>
 
+          {/* usuario y carrito */}
           <div className="container-user">
             <img src={user} alt="Usuario" />
-            <button className="content-shopping-cart" type="button">
+            <div
+              className="content-shopping-cart comprar"
+              onClick={() => (window.location.href = "carrito1.html")}
+              role="link"
+              tabIndex={0}
+            >
               <img src={shoppingCart} alt="Carrito de compras" />
               <span className="text">Carrito</span>
               <span className="number-products" aria-live="polite">
                 0
               </span>
-            </button>
+            </div>
           </div>
-        
+        </div>
       </div>
 
-      {/* navbar principal */}
       <nav className="container-navbar">
         <div className="navbar container">
-          <button className="btn-menu" type="button" aria-label="Abrir menú">
-            <img src={menu} alt="Abrir menú" />
-          </button>
-
+          <img
+            src={menu}
+            alt="Abrir menú"
+            id="btn-menu"
+            style={{ display: "none" }}
+          />
           <ul className="menu">
             <li>
-              <a href="/">Inicio</a>
+              <a href="index1.html">Inicio</a>
             </li>
             <li>
-              <a href="/menu">Hamburguesas</a>
+              <a href="menu1.html">Hamburguesas</a>
             </li>
             <li>
-              <a href="/sucursales">Dónde encontrarnos</a>
+              <a href="sucursales1.html">Dónde encontrarnos</a>
             </li>
           </ul>
-
           <form className="search-form">
             <input type="search" placeholder="Buscar..." />
-            <button className="btn-search" type="submit">
+            <button className="btn-search" type="button">
               <img src={lupa} alt="Buscar" />
             </button>
           </form>
