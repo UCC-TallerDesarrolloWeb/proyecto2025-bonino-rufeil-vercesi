@@ -1,6 +1,11 @@
 // Navbar.jsx
 import "./styles2.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { getCartItems } from "../javascript/cartService";
+import { useEffect, useState } from "react";
+
+import { getRouteFromSearch } from "../javascript/searchService";
+
 import hamburguer from "../assets/hamburguer.png";
 import menu from "../assets/menu.png";  
 import auriculares from "../assets/auriculares-con-microfono.png";
@@ -9,6 +14,33 @@ import user from "../assets/user.png";
 import lupa from "../assets/lupa.png";
 
 export default function Navbar() {
+
+  const [cartCount, setCartCount] = useState(0);
+  const [search, setSearch] = useState("");        
+  const navigate = useNavigate();
+
+    useEffect(() => {
+      // valor inicial
+      setCartCount(getCartItems());
+
+      function handleCartChange(e) {
+        // e.detail.count viene del dispatch
+        setCartCount(e.detail.count);
+      }
+
+      window.addEventListener("cart:changed", handleCartChange);
+
+      return () => {
+        window.removeEventListener("cart:changed", handleCartChange);
+      };
+    }, []);
+
+    // <--- función para buscar
+  function handleSearch() {
+    const route = getRouteFromSearch(search);
+    navigate(route);
+  }
+
   return (
     <header>
       <div className="container-hero">
@@ -37,19 +69,15 @@ export default function Navbar() {
           {/* usuario y carrito */}
           <div className="container-user">
             <img src={user} alt="Usuario" />
-            <div
-              className="content-shopping-cart comprar"
-              onClick={() => (window.location.href = "carrito1.html")}
-              role="link"
-              tabIndex={0}
-            >
+
+            <Link to="/carrito" className="content-shopping-cart comprar">
               <img src={shoppingCart} alt="Carrito de compras" />
               <span className="text">Carrito</span>
               <span className="number-products" aria-live="polite">
-                0
+                {cartCount}
               </span>
-            </div>
-          </div>
+            </Link>
+        </div>
         </div>
       </div>
 
@@ -63,18 +91,29 @@ export default function Navbar() {
           />
           <ul className="menu">
             <li>
-              <a href="index1.html">Inicio</a>
+              <Link to="/">Inicio</Link>
             </li>
             <li>
-              <a href="menu1.html">Hamburguesas</a>
+              <Link to="/menu">Hamburguesas</Link>
             </li>
             <li>
-              <a href="sucursales1.html">Dónde encontrarnos</a>
+              <Link to="/sucursales">Dónde encontrarnos</Link>
             </li>
           </ul>
-          <form className="search-form">
-            <input type="search" placeholder="Buscar..." />
-            <button className="btn-search" type="button">
+          <form 
+          className="search-form"
+          onSubmit={(e)=> {
+            e.preventDefault();
+            handleSearch();
+          }}
+          >
+            <input 
+            type="search" 
+            placeholder="Buscar..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)} 
+            />
+            <button className="btn-search" type="submit">
               <img src={lupa} alt="Buscar" />
             </button>
           </form>

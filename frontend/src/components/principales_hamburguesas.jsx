@@ -1,59 +1,77 @@
+// ../components/principales_hamburguesas.jsx
+import Hamburguesa from "./Hamburguesa.jsx";
+
+// si tenés las imágenes en assets, cambiá la ruta a ../assets/...
+import hamburguesaSimple from "../assets/hamburguesaclasica.png";
+import hamburguesaDoble from "../assets/hamburguesadoble.png";
+import hamburguesaTriple from "../assets/hamburguesatriple.png";
+
 export default function PrincipalesHamburguesas() {
+  const categoriasPrincipales = [
+    {
+      id: "clasica",
+      nombre: "Clásica",
+      precio: 13000,
+      imagen: hamburguesaSimple,
+      cardClass: "category-clasica", // así podés seguir usando tu CSS de fondo si querés
+    },
+    {
+      id: "doble",
+      nombre: "Doble",
+      precio: 14000,
+      imagen: hamburguesaDoble,
+      cardClass: "category-doble",
+    },
+    {
+      id: "triple",
+      nombre: "Triple",
+      precio: 15000,
+      imagen: hamburguesaTriple,
+      cardClass: "category-triple",
+    },
+  ];
+
+  const loMasPopular = [
+    {
+      id: "mistica-pop",
+      nombre: "Mistica",
+      precio: 14000,
+      // si después tenés una imagen específica la ponés acá
+      cardClass: "category-mistica",
+    },
+    {
+      id: "barbacue-pop",
+      nombre: "Barbacue",
+      precio: 14500,
+      cardClass: "category-barbacue",
+    },
+    {
+      id: "cheddar-pop",
+      nombre: "Cheddar",
+      precio: 14500,
+      cardClass: "category-cheddar",
+    },
+  ];
+
   return (
     <>
       {/* CATEGORIAS PRINCIPALES */}
       <section className="container top-categories">
         <h1 className="heading-1">Categorías principales</h1>
         <div className="container-categories">
-          {/* CLASICA */}
-          <div className="card-category category-clasica">
-            <p>Clasica</p>
-            <span>
-              <a href="menu1.html">Ver más</a>
-            </span>
-          </div>
-          {/* DOBLE */}
-          <div className="card-category category-doble">
-            <p>Doble</p>
-            <span>
-              <a href="menu1.html">Ver más</a>
-            </span>
-          </div>
-          {/* TRIPLE */}
-          <div className="card-category category-triple">
-            <p>Triple</p>
-            <span>
-              <a href="menu1.html">Ver más</a>
-            </span>
-          </div>
+          {categoriasPrincipales.map((item) => (
+            <Hamburguesa key={item.id} {...item} />
+          ))}
         </div>
       </section>
 
       {/* LO MAS POPULAR */}
       <section className="container top-categories">
-        <h1 className="heading-1">Lo Mas Popular</h1>
+        <h1 className="heading-1">Lo Más Popular</h1>
         <div className="container-categories">
-          {/* MISTICA */}
-          <div className="card-category category-mistica">
-            <p>Mistica</p>
-            <span>
-              <a href="menu1.html">Ver más</a>
-            </span>
-          </div>
-          {/* BARBACUE */}
-          <div className="card-category category-barbacue">
-            <p>Barbacue</p>
-            <span>
-              <a href="menu1.html">Ver más</a>
-            </span>
-          </div>
-          {/* CHEDDAR */}
-          <div className="card-category category-cheddar">
-            <p>Cheddar</p>
-            <span>
-              <a href="menu1.html">Ver más</a>
-            </span>
-          </div>
+          {loMasPopular.map((item) => (
+            <Hamburguesa key={item.id} {...item} />
+          ))}
         </div>
       </section>
     </>

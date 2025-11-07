@@ -1,4 +1,13 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+:root {
+    --primary-color: #d8b97f;
+    --secondary-color: #8f7e46;
+    --background-color: #ecdcc1;
+    --dark-color: #1a1a1a;
+    --text-color: #3d3c3c;
+}
+
 /*utilidades*/
 .container {/*para centrar*/
     max-width: 120rem;
@@ -706,6 +715,7 @@
 
 .comprar {
     cursor: pointer;
+    text-decoration: none;
 }
 
 
@@ -838,14 +848,7 @@
     text-decoration: none;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-:root {
-    --primary-color: #d8b97f;
-    --secondary-color: #8f7e46;
-    --background-color: #ecdcc1;
-    --dark-color: #1a1a1a;
-    --text-color: #3d3c3c;
-}
+
 html, body {
     font-size: 62.5%;           /*paraasar de 16 px a 10 px */
     font-family: 'Poppins', sans-serif;

@@ -5,7 +5,7 @@ import hamburguer from "../assets/hamburguer.png";
 import user from "../assets/user.png";
 import shoppingCart from "../assets/shopping-cart.png";
 
-export default function Features() {
+export default function Servicios() {
   return (
     <section className="container-features">
       {/* ENVIOS */}
