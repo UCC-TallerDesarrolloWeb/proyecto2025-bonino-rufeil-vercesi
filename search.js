@@ -1,6 +1,13 @@
 /**
- * Instala el submit del buscador.
- * Corrige: evita doble alerta cuando el valor está vacío e impide doble registro del listener.
+ * Instala el submit del buscador del navbar.
+ * - Solo se instala una vez (usa form.dataset.init).
+ * - Valida que haya texto.
+ * - Redirige a las páginas HTML según el término buscado.
+ * Páginas soportadas:
+ *  - "inicio" -> index.html
+ *  - "hamburguesas" -> menu1.html
+ *  - "carrito", "carrito de compras" -> carrito1.html
+ *  - "donde encontrarnos", "dónde encontrarnos" -> sucursales1.html
  */
 export function initSearchNavigation() {
   const form = document.querySelector('.search-form');
@@ -18,12 +25,12 @@ export function initSearchNavigation() {
     }
 
     if (value === 'inicio') {
-      window.location.href = 'index1.html';
+      window.location.href = 'index.html';
     } else if (value === 'hamburguesas') {
       window.location.href = 'menu1.html';
     } else if (value === 'carrito' || value === 'carrito de compras') {
       window.location.href = 'carrito1.html';
-    }else if (value === 'donde encontrarnos' || value === 'dónde encontrarnos') {
+    } else if (value === 'donde encontrarnos' || value === 'dónde encontrarnos') {
       window.location.href = 'sucursales1.html';
     } else {
       alert('No se encontró la página para: ' + value);
@@ -31,5 +38,9 @@ export function initSearchNavigation() {
   });
 }
 
-/** Auto-inicializa al cargar (solo una vez). */
+/**
+ * Inicializa automáticamente la navegación por búsqueda
+ * cuando el documento terminó de cargarse.
+ * Se ejecuta una sola vez gracias al control interno de initSearchNavigation.
+ */
 document.addEventListener('DOMContentLoaded', initSearchNavigation);

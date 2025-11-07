@@ -1,13 +1,21 @@
 // src/services/cartValidation.js
 
 /**
+ * Funciones de validación relacionadas al carrito.
+ * Actualmente valida la cantidad ingresada por el usuario.
+ */
+
+/**
  * Valida una cantidad para el carrito.
  * - Debe ser número
  * - Debe ser >= 1
  * - Debe ser <= 10
  *
- * @param {number} cantidad Cantidad que ingresó el usuario
- * @returns {{ok: boolean, message: string, value: number}} Resultado de la validación
+ * @param {number} cantidad Cantidad que ingresó el usuario.
+ * @returns {{ok: boolean, message: string, value: number}} Resultado de la validación.
+ * - ok: true si es válida.
+ * - message: texto de error listo para mostrar.
+ * - value: cantidad normalizada (por ejemplo, 1 si puso 0, o 10 si puso 999).
  */
 export function validateCartQuantity(cantidad) {
   // normalizamos

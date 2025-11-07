@@ -4,7 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { getCartItems } from "../javascript/cartService";
 import { useEffect, useState } from "react";
 
-import { getRouteFromSearch } from "../javascript/searchService";
+import { getRouteFromSearch, handleSearch } from "../javascript/searchService.js";
+
 
 import hamburguer from "../assets/hamburguer.png";
 import menu from "../assets/menu.png";  
@@ -36,10 +37,7 @@ export default function Navbar() {
     }, []);
 
     // <--- función para buscar
-  function handleSearch() {
-    const route = getRouteFromSearch(search);
-    navigate(route);
-  }
+  
 
   return (
     <header>
@@ -104,7 +102,7 @@ export default function Navbar() {
           className="search-form"
           onSubmit={(e)=> {
             e.preventDefault();
-            handleSearch();
+            handleSearch(search, navigate);
           }}
           >
             <input 

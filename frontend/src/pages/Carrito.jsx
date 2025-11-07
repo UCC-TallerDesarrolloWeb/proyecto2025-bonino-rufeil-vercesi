@@ -16,7 +16,12 @@ export default function Carrito() {
   useEffect(() => {
     const c = getCart();
     setCart(c);
-    setTotal(getCartItems());
+    // suma de $ (precio * cantidad), no cantidad de items
+    const initialTotal = c.reduce(
+      (acc, item) => acc + Number(item.precio) * Number(item.cantidad),
+      0
+    );
+    setTotal(initialTotal);
   }, []);
 
   function handleQuantityChange(id, value) {

@@ -5,18 +5,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>La Mistica</title>
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="styles1.css" />
   
   <meta name="author" content="Joaquin Bonino, Demetrio Rufeil, Santino Vercesi" />
   <meta name="description" content="Hamburg - Menú de hamburguesas" />
   <meta name="keywords" content="hamburguesas" />
 
+<script type="module">
+  import './search.js';
+</script>
 
-</head>
 <body>
-  <header>
+
+    <!-- nav -->
+    <header>
     <div class="container-hero">
       <div class="container hero">
+        
+        <!-- control k c para comentar -->
+         <!-- soporte al cliente -->
         <div class="customer-support">
             <img class="icon-headset" src="img/auriculares-con-microfono.png" alt="Soporte al cliente" />
             <div class="content-customer-support">
@@ -25,35 +32,33 @@
           </div>
         </div>
 
+        <!-- titulo  -->
+
         <div class="container-logo">
           <img src="img/hamburguer.png" alt="Logo empresa" />
           <h1 class="logo"><a href="index.html">La Mistica</a></h1>
         </div>
 
+        <!-- carrito boton -->
+
         <div class="container-user">
           <img src="img/user.png" alt="Usuario" />
-
-          <div class="content-shopping-cart">
-            <div class="content-shopping-cart" onclick="location.href='carrito.html'" role="link" tabindex="0" style="cursor:pointer;">
-              <img src="img/shopping-cart.png" alt="Carrito de compras" />
-              <span class="text">Carrito</span>
-              <span class="number-products" aria-live="polite">0</span>
-            </div>
+          <div class="content-shopping-cart" onclick="location.href='carrito1.html'" role="link" tabindex="0" style="cursor:pointer;">
+            <img src="img/shopping-cart.png" alt="Carrito de compras" />
+            <span class="text">Carrito</span>
+            <span class="number-products" aria-live="polite">0</span>
           </div>
         </div>
       </div>
     </div>
 
     <nav class="container-navbar">
-      <nav class="navbar container">
+      <div class="navbar container">
         <img src="img/menu.png" alt="Abrir menú" id="btn-menu" style="display:none;" />
         <ul class="menu">
           <li><a href="index.html">Inicio</a></li>
-          <li><a href="menu.html">Hamburguesas</a></li>
-          <!--<li><a href="bebidas.html">Bebidas</a></li>-->
-          <!-- <li><a href="acompanamientos.html">Acompañamientos</a></li> -->
-          <li><a href="sucursales.html">Dónde encontrarnos</a></li>
-          <!-- <li><a href="blog.html">Blog</a></li> -->
+          <li><a href="menu1.html">Hamburguesas</a></li>
+          <li><a href="sucursales1.html">Dónde encontrarnos</a></li>
         </ul>
         <form class="search-form">
           <input type="search" placeholder="Buscar..."/>
@@ -61,10 +66,10 @@
             <img src="img/lupa.png" alt="Buscar" />
           </button>
         </form>
-      </nav>
+    </div>
     </nav>
   </header>
- 
+
   <section class="banner">
     <div class="content-banner">
       <p>las mejores hamburguesas de cordoba</p>
@@ -72,9 +77,13 @@
       <a href="menu.html">Comprar</a>
     </div>
   </section>
- <main class="main-content">
-     <section class="container-features">
-      <!-- -->
+
+  <main class="main-content">
+
+    <!-- ENVIOS, INGREDIENTES; SOPORTE; COMPRA FACIL -->
+
+    <section class="container-features">
+      <!-- ENVIOS -->
       <div class="card-feature">
         <img src="img/plane.png" alt="Envíos rápidos" />
         <div class="feature-content">
@@ -82,7 +91,7 @@
           <p>Gratis en compras mayores a $40.000</p>
         </div>
       </div>
-      <!--2 -->
+      <!--INGRED -->
       <div class="card-feature">
         <img src="img/hamburguer.png" alt="Calidad premium" />
         <div class="feature-content">
@@ -90,7 +99,7 @@
           <p>Carne seleccionada, pan artesanal</p>
         </div>
       </div>
-      <!--3 -->
+      <!--SOPORTE -->
       <div class="card-feature">
         <img src="img/user.png" alt="Atención al cliente" />
         <div class="feature-content">
@@ -98,7 +107,7 @@
           <p>Siempre disponibles para ayudarte</p>
         </div>
       </div>
-      <!-- el4 -->
+      <!-- COMPRA FACIL -->
       <div class="card-feature">
         <img src="img/shopping-cart.png" alt="Compras fáciles" />
         <div class="feature-content">
@@ -108,181 +117,56 @@
       </div>
     </section>
 
+    <!-- CATEGORIAS PRINCIPALES -->
+
     <section class="container top-categories">
       <h1 class="heading-1">Categorías principales</h1>
       <div class="container-categories">
+        <!-- CLASICA -->
         <div class="card-category category-clasica">
           <p>Clasica</p>
-          <span><a href="menu.html" style="color: #fff; text-decoration: none;">Ver más</a></span>
+          <span><a href="menu1.html" >Ver más</a></span>
         </div>
+        <!-- DOBLE -->
         <div class="card-category category-doble">
           <p>Doble</p>
-          <span><a href="menu.html" style="color: #fff; text-decoration: none;">Ver más</a></span>
+          <span><a href="menu1.html" >Ver más</a></span>
         </div>
+        <!-- TRIPLE -->
         <div class="card-category category-triple">
           <p>Triple</p>
-          <span><a href="menu.html" style="color: #fff; text-decoration: none;">Ver más</a></span>
+          <span><a href="menu1.html" >Ver más</a></span>
         </div>       
       </div>
     </section>
 
-    <section class="top-products">
-      <h1 class="heading-1">Lo más popular</h1>
-      <div class="container-top-products">
-        <input type="checkbox" id="modal-mistica-index" class="modal-toggle" hidden>
-        <label for="modal-mistica-index" class="card-category product-mistica" style="cursor:pointer;">
+
+    <!-- LO MAS POPULAR -->
+
+<section class="container top-categories">
+      <h1 class="heading-1">Lo Mas Popular</h1>
+      <div class="container-categories">
+        <!-- CLASICA -->
+        <div class="card-category category-mistica">
           <p>Mistica</p>
-        </label>
-        <div class="modal-producto" id="modal-mistica-index-content">
-          <div class="modal-box">
-            <label for="modal-mistica-index" class="modal-close">×</label>
-            <img src="img/hamburguesadoble.png" alt="Hamburguesa Mistica" style="width:260px; border-radius:1rem; margin-bottom:2rem; display:block;">
-            <h3>Mistica</h3>
-            <p>Precio: $14.000</p>
-            <form method="post" action="#" style="margin-top:1rem;">
-              <label for="cantidad-mistica-index-modal">Cantidad:</label>
-              <input type="number" id="cantidad-mistica-index-modal" name="cantidad-mistica-index-modal" min="1" max="10" value="1" size="2">
-              <button type="submit" style="margin-left:1rem; padding:0.5rem 2rem; background:var(--secondary-color); color:#fff; border:none; border-radius:1rem; font-size:1rem; cursor:pointer;">Añadir al carrito</button>
-            </form>
-          </div>
+          <span><a href="menu1.html" >Ver más</a></span>
         </div>
-
-        <input type="checkbox" id="modal-barbecue-index" class="modal-toggle" hidden>
-        <label for="modal-barbecue-index" class="card-category product-barbecue" style="cursor:pointer;">
-          <p>Barbecue</p>
-        </label>
-        <div class="modal-producto" id="modal-barbecue-index-content">
-          <div class="modal-box">
-            <label for="modal-barbecue-index" class="modal-close">×</label>
-            <img src="img/hamburguesatriple.png" alt="Hamburguesa Barbecue" style="width:260px; border-radius:1rem; margin-bottom:2rem; display:block;">
-            <h3>Barbecue</h3>
-            <p>Precio: $14.500</p>
-            <form method="post" action="#" style="margin-top:1rem;">
-              <label for="cantidad-barbecue-index-modal">Cantidad:</label>
-              <input type="number" id="cantidad-barbecue-index-modal" name="cantidad-barbecue-index-modal" min="1" max="10" value="1" size="2">
-              <button type="submit" style="margin-left:1rem; padding:0.5rem 2rem; background:var(--secondary-color); color:#fff; border:none; border-radius:1rem; font-size:1rem; cursor:pointer;">Añadir al carrito</button>
-            </form>
-          </div>
+        <!-- DOBLE -->
+        <div class="card-category category-barbacue">
+          <p>Barbacue</p>
+          <span><a href="menu1.html" >Ver más</a></span>
         </div>
-
-        <input type="checkbox" id="modal-cheddar-index" class="modal-toggle" hidden>
-        <label for="modal-cheddar-index" class="card-category product-cheddar" style="cursor:pointer;">
+        <!-- TRIPLE -->
+        <div class="card-category category-cheddar">
           <p>Cheddar</p>
-        </label>
-        <div class="modal-producto" id="modal-cheddar-index-content">
-          <div class="modal-box">
-            <label for="modal-cheddar-index" class="modal-close">×</label>
-            <img src="img/hamburguesatriple.png" alt="Hamburguesa Cheddar" style="width:260px; border-radius:1rem; margin-bottom:2rem; display:block;">
-            <h3>Cheddar</h3>
-            <p>Precio: $14.500</p>
-            <form method="post" action="#" style="margin-top:1rem;">
-              <label for="cantidad-cheddar-index-modal">Cantidad:</label>
-              <input type="number" id="cantidad-cheddar-index-modal" name="cantidad-cheddar-index-modal" min="1" max="10" value="1" size="2">
-              <button type="submit" style="margin-left:1rem; padding:0.5rem 2rem; background:var(--secondary-color); color:#fff; border:none; border-radius:1rem; font-size:1rem; cursor:pointer;">Añadir al carrito</button>
-            </form>
-          </div>
-        </div>
+          <span><a href="menu1.html" >Ver más</a></span>
+        </div>       
       </div>
-    </section>
 
-    </section>
-
+</section>
+    
   </main>
 
 
 
-
-
-  <footer>
-    <p>© 2025 La Mistica.</p>
-  </footer>
 </body>
-<script>
-// Buscador inteligente
-document.addEventListener('DOMContentLoaded', function() {
-  var searchForm = document.querySelector('.search-form');
-  if (searchForm) {
-    searchForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      var value = searchForm.querySelector('input[type="search"]').value.trim().toLowerCase();
-      if (value === 'inicio') {
-        window.location.href = 'index.html';
-      } else if (value === 'hamburguesas') {
-        window.location.href = 'menu.html';
-      } else if (value === 'donde encontrarnos' || value === 'dónde encontrarnos') {
-        window.location.href = 'sucursales.html';
-      } else {
-        alert('No se encontró la página para: ' + value);
-      }
-    });
-  }
-
-  // Menú hamburguesa para móviles
-  var btnMenu = document.getElementById('btn-menu');
-  var menu = document.querySelector('.menu');
-  function checkMenuDisplay() {
-    if (window.innerWidth <= 768) {
-      btnMenu.style.display = 'block';
-      menu.style.display = 'none';
-      // Limpia estilos de escritorio
-      menu.style.flexDirection = '';
-      menu.style.position = '';
-      menu.style.top = '';
-      menu.style.right = '';
-      menu.style.width = '';
-      menu.style.backgroundColor = '';
-      menu.style.padding = '';
-    } else {
-      btnMenu.style.display = 'none';
-      menu.style.display = 'flex';
-      // Estilo horizontal escritorio
-      menu.style.flexDirection = 'row';
-      menu.style.position = '';
-      menu.style.top = '';
-      menu.style.right = '';
-      menu.style.width = '';
-      menu.style.backgroundColor = '';
-      menu.style.padding = '';
-    }
-  }
-  checkMenuDisplay();
-  window.addEventListener('resize', checkMenuDisplay);
-  btnMenu.addEventListener('click', function() {
-    if (menu.style.display === 'none') {
-      menu.style.display = 'flex';
-      menu.style.flexDirection = 'column';
-      menu.style.position = 'absolute';
-      menu.style.top = '100%';
-      menu.style.right = '0';
-      menu.style.width = '200px';
-      menu.style.backgroundColor = '#d8b97f';
-      menu.style.padding = '1rem';
-    } else {
-      menu.style.display = 'none';
-    }
-  });
-});
-</script>
-</body>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var searchForm = document.querySelector('.search-form');
-  if (searchForm) {
-    searchForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      var value = searchForm.querySelector('input[type="search"]').value.trim().toLowerCase();
-      if (value === 'inicio') {
-        window.location.href = 'index.html';
-      } else if (value === 'hamburguesas') {
-        window.location.href = 'menu.html';
-      } else if (value === 'donde encontrarnos' || value === 'dónde encontrarnos') {
-        window.location.href = 'sucursales.html';
-      } else {
-        alert('No se encontró la página para: ' + value);
-      }
-    });
-  }
-});
-</script>
-</body>
-</html>

@@ -181,13 +181,19 @@ export function renderCartTable() {
   updateCartBubble();
 }
 
-
-
-/** Inicializa la burbuja al cargar (solo una vez). */
+/**
+ * Inicializa la burbuja del carrito una sola vez al cargar el documento.
+ * Revisa un flag en document.documentElement para no repetir la operación.
+ */
 function initCartBubbleOnce() {
   if (document.documentElement.dataset.cartBubbleInit === '1') return;
   document.documentElement.dataset.cartBubbleInit = '1';
   updateCartBubble();
 }
 
+/**
+ * Al cargar el DOM, inicializa la burbuja del carrito.
+ * Esto permite que, aunque no se haya abierto el carrito,
+ * el usuario vea cuántos ítems tiene.
+ */
 document.addEventListener('DOMContentLoaded', initCartBubbleOnce);

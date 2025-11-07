@@ -58,6 +58,8 @@ menu.html
 sucursales.html
 carrito.html
 styles.css
+cart.js
+search.js
 README.md
 ```
 
