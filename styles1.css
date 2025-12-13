@@ -9,6 +9,13 @@
     padding:2rem 0;
 }
 
+.title-carrito{
+    text-align:center; 
+    margin:2rem 0;
+    font-size:3rem;
+    font-weight:500;
+}
+
 /* Grid del contenedor principal */
 .carrito-grid{
   display: grid;

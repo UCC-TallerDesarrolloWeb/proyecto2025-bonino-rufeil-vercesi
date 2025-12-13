@@ -96,6 +96,12 @@
 .c{ text-align: center; }
 .l{ text-align: left; }
 
+.title-carrito{
+    text-align:center; 
+    margin:2rem 0;
+    font-size:1.5rem;
+    font-weight:700;
+}
 
 .carrito h2{
     text-align:center; 

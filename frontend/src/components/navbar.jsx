@@ -105,9 +105,10 @@ export default function Navbar() {
             handleSearch(search, navigate);
           }}
           >
+            <label htmlFor="nav-search"> Buscar...</label>
             <input 
+            id="nav-search"
             type="search" 
-            placeholder="Buscar..."
             value={search}
             onChange={(e) => setSearch(e.target.value)} 
             />

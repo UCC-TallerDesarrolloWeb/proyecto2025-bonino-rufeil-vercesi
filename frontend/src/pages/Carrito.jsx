@@ -56,6 +56,7 @@ export default function Carrito() {
       <section id="cart-box" className="carrito-box carrito-grid-box">
         {!isEmpty && (
           <table id="cart-table" className="cart-table">
+          <caption className="title-carrito">Resumen del Carrito</caption>
             <thead>
               <tr>
                 <th className="l">Tipo</th>
@@ -69,7 +70,9 @@ export default function Carrito() {
                 <tr key={item.id}>
                   <td className="l">{item.nombre}</td>
                   <td className="c">
+                    <label htmlFor="cantidad-hamburguesa">Cantidad: </label>
                     <input
+                      id="cantidad-haburguesa"
                       type="number"
                       min="1"
                       max="10"
