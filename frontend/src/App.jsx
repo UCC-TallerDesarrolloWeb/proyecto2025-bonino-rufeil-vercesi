@@ -1,31 +1,25 @@
-import { useState } from 'react'
 import { Routes, Route } from "react-router-dom";
-import './components/styles2.css'
-import Navbar from './components/navbar.jsx'
-import TermsAndConditons from './components/TermsAndConditions.jsx';
+import RootLayout from "@components/RootLayout.jsx";
 
-//pages:
-import Home from "./pages/Home.jsx";
-import Menu from "./pages/Menu.jsx";
-import Sucursales from "./pages/Sucursales.jsx";
-import Carrito from "./pages/Carrito.jsx";
+// pages
+import Home from "@pages/Home.jsx";
+import Menu from "@pages/Menu.jsx";
+import Sucursales from "@pages/Sucursales.jsx";
+import Carrito from "@pages/Carrito.jsx";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-      <Navbar />
-      
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/sucursales" element={<Sucursales />} />
-        <Route path="/carrito" element={<Carrito />} />
-      </Routes>
-      <TermsAndConditons />
-    </>
-  )
+    <Routes>
+      <Route element={<RootLayout />}>
+        <Route index element={<Home />} />
+        <Route path="menu" element={<Menu />} />
+        <Route path="sucursales" element={<Sucursales />} />
+        <Route path="carrito" element={<Carrito />} />
+        
+        {/* opcional 404:
+        <Route path="*" element={<Home />} />
+        */}
+      </Route>
+    </Routes>
+  );
 }
-
-export default App

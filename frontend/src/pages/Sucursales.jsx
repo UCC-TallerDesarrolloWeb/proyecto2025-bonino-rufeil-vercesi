@@ -1,6 +1,6 @@
 // src/pages/Sucursales.jsx
-import "../components/styles2.css"; // o la ruta que uses para ese css
-import instagram from "../assets/instagram.png";
+import "@styles/styles2.css"; // o la ruta que uses para ese css
+import instagram from "@assets/instagram.png";
 
 export default function Sucursales() {
   return (

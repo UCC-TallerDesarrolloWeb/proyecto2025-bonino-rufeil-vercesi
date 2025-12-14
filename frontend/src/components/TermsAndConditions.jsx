@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchTermsAndConditions } from "../javascript/fetchTerms";
+import { fetchTermsAndConditions } from "@api/fetchTerms";
 
 export default function TermsAndConditions() {
   const [terms, setTerms] = useState("");  // Aquí guardaremos el texto de los términos

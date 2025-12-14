@@ -1,5 +1,5 @@
-import Servicios from '../components/servicios.jsx'
-import PrincipalesHamburguesas from '../components/principales_hamburguesas.jsx'
+import Servicios from '@components/servicios.jsx'
+import PrincipalesHamburguesas from '@components/principales_hamburguesas.jsx'
 
 export default function Home() {
   return (

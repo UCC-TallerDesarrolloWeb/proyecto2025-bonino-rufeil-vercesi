@@ -1,10 +1,10 @@
 // Navbar.jsx
-import "./styles2.css";
+import "@styles/styles2.css";
 import { Link, useNavigate } from "react-router-dom";
-import { getCartItems } from "../javascript/cartService";
+import { getCartItems } from "@js/cartService";
 import { useEffect, useState } from "react";
 
-import { getRouteFromSearch, handleSearch } from "../javascript/searchService.js";
+import { getRouteFromSearch, handleSearch } from "@js/searchService.js";
 
 
 import hamburguer from "../assets/hamburguer.png";

@@ -1,10 +1,10 @@
 // ../components/principales_hamburguesas.jsx
-import Hamburguesa from "./Hamburguesa.jsx";
+import Hamburguesa from "./hamburguesa.jsx";
 
 // si tenés las imágenes en assets, cambiá la ruta a ../assets/...
-import hamburguesaSimple from "../assets/hamburguesaclasica.png";
-import hamburguesaDoble from "../assets/hamburguesadoble.png";
-import hamburguesaTriple from "../assets/hamburguesatriple.png";
+import hamburguesaSimple from "@assets/hamburguesaclasica.png";
+import hamburguesaDoble from "@assets/hamburguesadoble.png";
+import hamburguesaTriple from "@assets/hamburguesatriple.png";
 
 export default function PrincipalesHamburguesas() {
   const categoriasPrincipales = [

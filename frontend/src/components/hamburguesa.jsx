@@ -1,7 +1,7 @@
 // src/componentes/Hamburguesa.jsx
 import { useState } from "react";
-import { addToCart } from "../javascript/cartService.js";
-import { validateCartQuantity } from "../javascript/cartValidation.js";
+import { addToCart } from "@js/cartService.js";
+import { validateCartQuantity } from "@js/cartValidation.js";
 import ErrorMessage from "./ErrorMessage.jsx";
 
 export default function Hamburguesa({

@@ -1,8 +1,8 @@
 // ../pages/Menu.jsx
 
-import hamburguesaSimple from "../assets/hamburguesaclasica.png";
-import hamburguesaDoble from "../assets/hamburguesadoble.png";
-import hamburguesaTriple from "../assets/hamburguesatriple.png";
+import hamburguesaSimple from "@assets/hamburguesaclasica.png";
+import hamburguesaDoble from "@assets/hamburguesadoble.png";
+import hamburguesaTriple from "@assets/hamburguesatriple.png";
 
 import Hamburguesa from "../components/hamburguesa.jsx";
 
