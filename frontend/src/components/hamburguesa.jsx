@@ -10,7 +10,7 @@ export default function Hamburguesa({
   precio,
   imagen,
   cardClass = "",
-  modalImgStyle = {},
+  modalImgClass = "modal-product-image",
 }) {
   const checkboxId = `modal-${id}`;
   const [cantidad, setCantidad] = useState(1);
@@ -77,11 +77,7 @@ export default function Hamburguesa({
             <img
               src={imagen}
               alt={`Hamburguesa ${nombre}`}
-              style={{
-                borderRadius: "1rem",
-                marginBottom: "2rem",
-                ...modalImgStyle,
-              }}
+              className={modalImgClass}
             />
           )}
 

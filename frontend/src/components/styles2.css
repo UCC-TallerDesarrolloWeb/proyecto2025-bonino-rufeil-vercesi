@@ -128,6 +128,23 @@
   border-collapse: collapse;
 }
 
+.nodisplay{
+    display: "none";
+    
+}
+
+/* Imagen del modal de producto */
+.modal-product-img {
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+  display: block; /* útil si querés centrar con margin auto */
+}
+
+/* Variantes de tamaño (usá las que necesites) */
+.modal-product-img--w260 { width: 260px; }
+.modal-product-img--w300 { width: 300px; }
+/* podés crear más variantes: --w240, --w320, etc. */
+
 
 .carrito-box table thead tr{
     padding:.75rem 1rem; 

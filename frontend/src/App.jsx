@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Routes, Route } from "react-router-dom";
 import './components/styles2.css'
 import Navbar from './components/navbar.jsx'
+import TermsAndConditons from './components/TermsAndConditions.jsx';
 
 //pages:
 import Home from "./pages/Home.jsx";
@@ -15,12 +16,14 @@ function App() {
   return (
     <>
       <Navbar />
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/sucursales" element={<Sucursales />} />
         <Route path="/carrito" element={<Carrito />} />
       </Routes>
+      <TermsAndConditons />
     </>
   )
 }

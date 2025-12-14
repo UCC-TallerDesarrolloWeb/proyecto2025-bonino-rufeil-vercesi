@@ -80,7 +80,7 @@ export default function Carrito() {
                       onChange={(e) =>
                         handleQuantityChange(item.id, e.target.value)
                       }
-                      style={{ width: "4rem" }}
+                      
                     />
                   </td>
                   <td className="r">

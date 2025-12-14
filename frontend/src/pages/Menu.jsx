@@ -14,7 +14,7 @@ export default function Menu() {
       precio: 13000,
       imagen: hamburguesaSimple,
       cardClass: "product-simple",
-      modalImgStyle: { width: "260px", display: "block" },
+      modalImgClass: "modal-product-img modal-product-img--w260",
     },
   ];
 

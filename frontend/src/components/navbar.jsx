@@ -40,6 +40,7 @@ export default function Navbar() {
   
 
   return (
+    
     <header>
       <div className="container-hero">
         <div className="container hero">
@@ -85,7 +86,8 @@ export default function Navbar() {
             src={menu}
             alt="Abrir menú"
             id="btn-menu"
-            style={{ display: "none" }}
+            className= "nodisplay"
+            
           />
           <ul className="menu">
             <li>
