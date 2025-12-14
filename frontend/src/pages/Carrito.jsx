@@ -6,7 +6,7 @@ import {
   updateQuantity,
   removeFromCart,
   clearCart,
-} from "@js/cartService.js";
+} from "@js/javascript.js";
 
 export default function Carrito() {
   const [cart, setCart] = useState([]);

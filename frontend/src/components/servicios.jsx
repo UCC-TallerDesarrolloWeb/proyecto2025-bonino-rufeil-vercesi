@@ -2,7 +2,7 @@ import "@styles/styles2.css";
 
 import plane from "@assets/plane.png";
 import hamburguer from "@assets/hamburguer.png";
-import user from "@assets/user.png";
+import user from "../public/user.png";
 import shoppingCart from "@assets/shopping-cart.png";
 
 export default function Servicios() {

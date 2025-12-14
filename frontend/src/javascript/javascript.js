@@ -1,4 +1,10 @@
-// src/services/cartService.js
+
+
+// SERVICIO DEL CARRITO:
+// SERVICIO DEL CARRITO:
+// SERVICIO DEL CARRITO:
+// SERVICIO DEL CARRITO:
+// SERVICIO DEL CARRITO:
 
 const CART_KEY = "cart-la-mistica";
 
@@ -114,4 +120,108 @@ export function clearCart() {
 export function getCartItems() {
   const cart = getCart() || [];
   return cart.reduce((total, item) => total + (item.cantidad || 0), 0);
+}
+
+
+
+// VALIDACION DEL CARRITO:
+// VALIDACION DEL CARRITO:
+// VALIDACION DEL CARRITO:
+// VALIDACION DEL CARRITO:
+// VALIDACION DEL CARRITO:
+
+// src/services/cartValidation.js
+
+/**
+ * Funciones de validación relacionadas al carrito.
+ * Actualmente valida la cantidad ingresada por el usuario.
+ */
+
+/**
+ * Valida una cantidad para el carrito.
+ * - Debe ser número
+ * - Debe ser >= 1
+ * - Debe ser <= 10
+ *
+ * @param {number} cantidad Cantidad que ingresó el usuario.
+ * @returns {{ok: boolean, message: string, value: number}} Resultado de la validación.
+ * - ok: true si es válida.
+ * - message: texto de error listo para mostrar.
+ * - value: cantidad normalizada (por ejemplo, 1 si puso 0, o 10 si puso 999).
+ */
+export function validateCartQuantity(cantidad) {
+  // normalizamos
+  const value = Number(cantidad);
+
+  if (Number.isNaN(value)) {
+    return {
+      ok: false,
+      message: "La cantidad debe ser un número.",
+      value: 1,
+    };
+  }
+
+  if (value < 1) {
+    return {
+      ok: false,
+      message: "La cantidad mínima es 1.",
+      value: 1,
+    };
+  }
+
+  if (value > 10) {
+    return {
+      ok: false,
+      message: "La cantidad máxima es 10.",
+      value: 10,
+    };
+  }
+
+  return {
+    ok: true,
+    message: "",
+    value,
+  };
+}
+
+
+//SERVICIO DE BUSQUEDA:
+//SERVICIO DE BUSQUEDA:
+//SERVICIO DE BUSQUEDA:
+//SERVICIO DE BUSQUEDA:
+//SERVICIO DE BUSQUEDA:
+//SERVICIO DE BUSQUEDA:
+
+// src/javascript/searchService.js
+
+/**
+ * Devuelve la ruta a la que hay que ir según el texto buscado.
+ * Acepta cosas como "inicio", "home", "menu", "hamburguesas", "sucursales".
+ * Si no reconoce, manda al menú.
+ *
+ * @param {string} term Texto ingresado por el usuario.
+ * @returns {string} Ruta de React (ej. "/menu").
+ */
+export function getRouteFromSearch(term) {
+  const q = term.trim().toLowerCase();
+
+  if (q === "" || q === "inicio" || q === "home") return "/";
+  if (q.includes("hamb") || q === "menu") return "/menu";
+  if (q.includes("suc") || q.includes("lugar") || q.includes("donde")) return "/sucursales";
+  if (q.includes("carrito") || q.includes("compras") || q.includes("pedido")) return "/carrito";
+
+  // por defecto
+  return "/menu";
+}
+
+/**
+ * Maneja la búsqueda del usuario en React, resolviendo la ruta
+ * y navegando con la función de react-router.
+ *
+ * @param {string} search Texto ingresado por el usuario.
+ * @param {(path:string) => void} navigate Función de navegación (useNavigate).
+ */
+export function handleSearch(search, navigate) {
+  const route = getRouteFromSearch(search);
+  navigate(route);
 }

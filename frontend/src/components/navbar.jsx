@@ -1,18 +1,18 @@
 // Navbar.jsx
 import "@styles/styles2.css";
 import { Link, useNavigate } from "react-router-dom";
-import { getCartItems } from "@js/cartService";
+import { getCartItems } from "@js/javascript.js";
 import { useEffect, useState } from "react";
 
-import { getRouteFromSearch, handleSearch } from "@js/searchService.js";
+import { getRouteFromSearch, handleSearch } from "@js/javascript.js";
 
 
-import hamburguer from "../assets/hamburguer.png";
-import menu from "../assets/menu.png";  
-import auriculares from "../assets/auriculares-con-microfono.png";
-import shoppingCart from "../assets/shopping-cart.png";
-import user from "../assets/user.png";
-import lupa from "../assets/lupa.png";
+import hamburguer from "@assets/hamburguer.png";
+import menu from "@assets/menu.png";  
+import auriculares from "@assets/auriculares-con-microfono.png";
+import shoppingCart from "@assets/shopping-cart.png";
+import user from "../public/user.png";
+import lupa from "@assets/lupa.png";
 
 export default function Navbar() {
 

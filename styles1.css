@@ -320,9 +320,6 @@
 }
 
 
-.menu a:hover::after {
-    /* Eliminado: rayita animada en hover */
-}
 
 
 /* responsive: mostrar hamburguesa y ocultar menú */
