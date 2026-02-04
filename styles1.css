@@ -391,9 +391,13 @@
 
 /*buscador*/
 .search-form{
-  display: flex;
-  align-items: center;
-  gap: .8rem;
+    position: relative;
+    align-items: center;
+    border-radius: 2rem;
+    background-color: #fff;
+    height: 4.4rem;
+    overflow: hidden;
+    gap: .8rem;
 }
 
 /*caja chica */
@@ -461,15 +465,7 @@
     color:#f6f3f3
 }
 
-.search-form{
-    position: relative;
-    display: flex;
-    align-items: center;
-    border-radius: 2rem;
-    background-color: #fff;
-    height: 4.4rem;
-    overflow: hidden;
-}
+
 .search-form input{
     border: none;
     outline: none;
@@ -715,7 +711,7 @@
 }
 
 .nodisplay {
-    display: "none";
+    display: none;
 }
 
 .product-simple{

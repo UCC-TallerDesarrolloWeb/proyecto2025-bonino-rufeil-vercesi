@@ -13,24 +13,22 @@
 
 <script type="module">
   import { renderCartTable } from './cart.js';
-    import './search.js';
+  import './search.js';
 
   document.addEventListener('DOMContentLoaded', () => {
     renderCartTable();
   });
 </script>
 
-
-
 <body>
-    <!-- HEADER IGUAL EN TODOS LADOS -->
+  <!-- HEADER IGUAL EN TODOS LADOS -->
 
-    <header>
+  <header>
     <div class="container-hero">
       <div class="container hero">
         <div class="customer-support">
-            <img class="icon-headset" src="img/auriculares-con-microfono.png" alt="Soporte al cliente" />
-            <div class="content-customer-support">
+          <img class="icon-headset" src="img/auriculares-con-microfono.png" alt="Soporte al cliente" />
+          <div class="content-customer-support">
             <span class="text">Soporte al cliente</span>
             <span class="number">+351-567-0876</span>
           </div>
@@ -43,7 +41,6 @@
 
         <div class="container-user">
           <img src="img/user.png" alt="Usuario" />
-
           <div class="content-shopping-cart">
             <img src="img/shopping-cart.png" alt="Carrito de compras" />
             <span class="text">Carrito</span>
@@ -53,9 +50,9 @@
       </div>
     </div>
 
-    <nav class="container-navbar">
-        <nav class="navbar container">
-        <img src="img/menu.png" alt="Abrir menú" />
+    <!-- NAV corregido -->
+    <nav class="container-navbar navbar container">
+      <img src="img/menu.png" alt="Abrir menú" />
 
       <ul class="menu">
         <li><a href="index.html">Inicio</a></li>
@@ -66,45 +63,43 @@
       <form class="search-form">
         <label for="buscar-lupa">Buscar...</label>
         <input id="buscar-lupa" type="search" />
-    <button class="btn-search">
-      <img src="img/lupa.png" alt="Buscar" />
-    </button>
+        <button class="btn-search">
+          <img src="img/lupa.png" alt="Buscar" />
+        </button>
       </form>
-    </div>
+    </nav>
   </header>
 
   <!-- FIN DEL HEADER -->
 
   <!-- MAIN -->
-
   <main class="container carrito carrito-grid">
-  <h2 class="carrito-title">Tu Orden</h2>
+    <h2 class="carrito-title">Tu Orden</h2>
 
-  <section id="cart-box" class="carrito-box carrito-grid-box">
-    <table id="cart-table" class="cart-table">
-      <caption class="title-carrito">Resumen del carrito</caption>
-      <thead>
-        <tr>
-          <th class="l">Tipo</th>
-          <th class="c">Cantidad</th>
-          <th class="r">Precio</th>
-        </tr>
-      </thead>
-      <tbody id="cart-tbody" class>
-        <!-- filas dinámicas -->
-      </tbody>
-      <tfoot>
-        <tr>
-          <td class="l cart-total-label">Total</td>
-          <td></td>
-          <td id="cart-total" class="r cart-total">0</td>
-        </tr>
-      </tfoot>
-    </table>
+    <section id="cart-box" class="carrito-box carrito-grid-box">
+      <table id="cart-table" class="cart-table">
+        <caption class="title-carrito">Resumen del carrito</caption>
+        <thead>
+          <tr>
+            <th class="l">Tipo</th>
+            <th class="c">Cantidad</th>
+            <th class="r">Precio</th>
+          </tr>
+        </thead>
+        <tbody id="cart-tbody">
+          <!-- filas dinámicas -->
+        </tbody>
+        <tfoot>
+          <tr>
+            <td class="l cart-total-label">Total</td>
+            <td></td>
+            <td id="cart-total" class="r cart-total">0</td>
+          </tr>
+        </tfoot>
+      </table>
 
-    <p id="cart-empty" class="cart-empty">Tu carrito está vacío.</p>
-  </section>
-</main>
-
-
+      <p id="cart-empty" class="cart-empty">Tu carrito está vacío.</p>
+    </section>
+  </main>
 </body>
+</html>

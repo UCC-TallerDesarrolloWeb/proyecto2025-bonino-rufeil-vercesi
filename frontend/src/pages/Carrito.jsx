@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import {
   getCart,
-  getCartItems,
   updateQuantity,
   removeFromCart,
   clearCart,
