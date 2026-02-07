@@ -1,5 +1,5 @@
 // Navbar.jsx
-import "@styles/styles2.css";
+import "@styles/styles2.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { getCartItems } from "@js/javascript.js";
 import { useEffect, useState } from "react";

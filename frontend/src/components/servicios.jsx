@@ -1,4 +1,4 @@
-import "@styles/styles2.css";
+import "@styles/styles2.scss";
 
 import plane from "@assets/plane.png";
 import hamburguer from "@assets/hamburguer.png";

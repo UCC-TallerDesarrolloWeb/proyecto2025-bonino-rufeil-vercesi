@@ -1,7 +1,12 @@
 {
+  "scripts": {
+  "sass:build": "sass styles1.scss styles1.css",
+  "sass:watch": "sass --watch styles1.scss:styles1.css"
+  },
   "devDependencies": {
     "eslint": "^9.39.2",
     "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^7.0.1"
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "sass": "^1.97.3"
   }
 }
