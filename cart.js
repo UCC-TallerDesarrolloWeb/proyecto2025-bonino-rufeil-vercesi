@@ -1,7 +1,10 @@
 /**
- * Lee el carrito del localStorage.
+ * Lee el carrito almacenado en localStorage.
  * @returns {Array<{name:string, price:number, qty:number}>}
+ * Arreglo con los productos del carrito; devuelve un arreglo vacío si no existe información almacenada,
+ * si el valor es nulo o si ocurre un error al parsear el contenido.
  */
+
 export function getCart() {
   try {
     const raw = localStorage.getItem('cart');
@@ -13,15 +16,19 @@ export function getCart() {
 
 /**
  * Guarda el carrito en localStorage.
- * @param {Array<{name:string, price:number, qty:number}>} cart
+ * @param {Array<{name:string, price:number, qty:number}>} cart Arreglo de productos a persistir en el almacenamiento local.
+ * @returns {void} No devuelve ningún valor; serializa el carrito y lo guarda en localStorage.
  */
+
 export function setCart(cart) {
   localStorage.setItem('cart', JSON.stringify(cart));
 }
 
 /**
- * Actualiza la burbuja de cantidad en el header.
+ * Actualiza la burbuja que muestra la cantidad total de productos en el header.
+ * @returns {void} No devuelve ningún valor; calcula la cantidad total a partir del carrito y actualiza el contenido del elemento visual. Si ocurre un error o el elemento no existe, no realiza ninguna acción.
  */
+
 export function updateCartBubble() {
   try {
     const cart = getCart();
@@ -32,13 +39,14 @@ export function updateCartBubble() {
 }
 
 /**
- * Agrega un producto al carrito y actualiza la burbuja.
- * Corrige: uso de let/const, validaciones y error al agregar “barbecue”.
- * @param {string} productName - Nombre del producto (ej. "Barbecue").
- * @param {number} productPrice - Precio unitario.
- * @param {string} qtyInputId - Id del input de cantidad.
- * @returns {boolean} Siempre false para evitar submit/recarga.
+ * Agrega un producto al carrito, persiste los cambios y actualiza la burbuja de cantidad.
+ * Valida la cantidad y el precio, normaliza el nombre del producto y maneja errores para evitar fallos en la interfaz.
+ * @param {string} productName Nombre del producto a agregar.
+ * @param {number} productPrice Precio unitario del producto.
+ * @param {string} qtyInputId Id del input desde donde se obtiene la cantidad.
+ * @returns {boolean} Siempre devuelve false para prevenir el envío del formulario o la recarga de la página, incluso si ocurre un error.
  */
+
 export function handleAddToCart(productName, productPrice, qtyInputId) {
   try {
     const qtyEl = document.getElementById(qtyInputId);
@@ -78,10 +86,11 @@ export function handleAddToCart(productName, productPrice, qtyInputId) {
  */
 
 /**
- * Formatea un número al estilo es-AR (ej. 13500 -> "13.500").
- * @param {number} n
- * @returns {string|number}
+ * Formatea un número y le pone puntos. ej. 3000 -> "3.000"
+ * @param {number} n Número a formatear.
+ * @returns {string|number} Devuelve un string con el número formateado según es-AR; si Intl.NumberFormat no está disponible o falla, devuelve el valor original sin formatear.
  */
+
 export function formatNumberAR(n) {
   try {
     return new Intl.NumberFormat('es-AR').format(n);
@@ -91,11 +100,12 @@ export function formatNumberAR(n) {
 }
 
 /**
- * Agrupa ítems del carrito por nombre, sumando cantidades.
- * Si vienen precios distintos con el mismo nombre, conserva el último.
- * @param {CartItem[]} items
- * @returns {CartItem[]}
+ * Agrupa los ítems del carrito por nombre, sumando las cantidades de productos repetidos.
+ * Si existen varios ítems con el mismo nombre pero distinto precio, se conserva el último precio encontrado.
+ * @param {CartItem[]} items Arreglo de ítems del carrito a compactar.
+ * @returns {CartItem[]} Nuevo arreglo de ítems compactados; si la entrada está vacía o las cantidades resultan 0, devuelve un arreglo vacío.
  */
+
 export function compactCart(items) {
   /** @type {Record<string, CartItem>} */
   const map = {};
@@ -118,12 +128,14 @@ export function compactCart(items) {
 
 /**
  * Renderiza la tabla del carrito en carrito.html.
- * Usa:
- *  - tbody con id="cart-tbody"
- *  - celda total con id="cart-total"
- *  - p con id="cart-empty"
- * y usa las clases .cart-td-name, .cart-td-qty, .cart-td-price que ya definiste en CSS.
+ * Utiliza los elementos:
+ * - tbody con id="cart-tbody"
+ * - celda total con id="cart-total"
+ * - p con id="cart-empty"
+ * y aplica las clases .cart-td-name, .cart-td-qty, .cart-td-price.
+ * @returns {void} No devuelve ningún valor; actualiza el DOM con los ítems del carrito y el total. Si la página no contiene la tabla (faltan tbody o total), finaliza sin hacer nada. Si el carrito está vacío, muestra el mensaje correspondiente, actualiza la burbuja y no renderiza filas.
  */
+
 export function renderCartTable() {
   const tbody = document.getElementById('cart-tbody');
   const totalEl = document.getElementById('cart-total');
@@ -183,8 +195,10 @@ export function renderCartTable() {
 
 /**
  * Inicializa la burbuja del carrito una sola vez al cargar el documento.
- * Revisa un flag en document.documentElement para no repetir la operación.
+ * Utiliza un flag en document.documentElement para evitar ejecuciones repetidas.
+ * @returns {void} No devuelve ningún valor; si la inicialización ya se realizó, finaliza inmediatamente. En caso contrario, marca el flag y actualiza la burbuja del carrito.
  */
+
 function initCartBubbleOnce() {
   if (document.documentElement.dataset.cartBubbleInit === '1') return;
   document.documentElement.dataset.cartBubbleInit = '1';
@@ -205,16 +219,13 @@ document.addEventListener('DOMContentLoaded', initCartBubbleOnce);
  */
 
 /**
- * Instala el submit del buscador del navbar.
- * - Solo se instala una vez (usa form.dataset.init).
- * - Valida que haya texto.
- * - Redirige a las páginas HTML según el término buscado.
- * Páginas soportadas:
- *  - "inicio" -> index.html
- *  - "hamburguesas" -> menu1.html
- *  - "carrito", "carrito de compras" -> carrito1.html
- *  - "donde encontrarnos", "dónde encontrarnos" -> sucursales1.html
+ * Inicializa la navegación del buscador del navbar.
+ * Instala el manejador del evento submit una sola vez utilizando un flag en el dataset del formulario.
+ * Valida que el usuario haya ingresado un texto y redirige a las páginas HTML correspondientes
+ * según el término buscado. Si el término no coincide con ninguna página soportada, muestra un mensaje de error.
+ * @returns {void} No devuelve ningún valor; registra el listener del formulario y realiza redirecciones o alertas según el caso.
  */
+
 export function initSearchNavigation() {
   const form = document.querySelector('.search-form');
   if (!form || form.dataset.init === '1') return;
