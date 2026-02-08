@@ -5,10 +5,11 @@ const CART_KEY = "cart-la-mistica";
 
 /**
  * Dispara un evento global ("cart:changed") cada vez que el carrito cambia.
- * Lo usan componentes como el Navbar para actualizar el contador en vivo.
- * @param {Array<{id:string, nombre:string, precio:number, cantidad:number}>} cart Carrito actualizado
- * @returns {void} No devuelve ningún valor; solo emite el evento "cart:changed" con el carrito y el total de unidades.
+ * Es utilizado por componentes como el Navbar para actualizar el contador en tiempo real.
+ * @param {Array<{id:string, nombre:string, precio:number, cantidad:number}>} cart Carrito actualizado.
+ * @returns {void} No devuelve ningún valor; si el entorno es un navegador, emite el evento "cart:changed" con el carrito y la cantidad total de unidades. En entornos sin window, no realiza ninguna acción.
  */
+
 function dispatchCartChange(cart) {
   if (typeof window !== "undefined") {
     window.dispatchEvent(
@@ -25,11 +26,13 @@ function dispatchCartChange(cart) {
 
 
 /**
- * Lee el carrito desde localStorage.
- * Si no hay nada o el JSON está corrupto, devuelve [].
+ * Lee el carrito almacenado en localStorage.
+ * Si no existe información guardada, el JSON es inválido o el código se ejecuta fuera del navegador,
+ * devuelve un arreglo vacío.
  * @returns {Array<{id:string, nombre:string, precio:number, cantidad:number}>}
- * Devulve un array con los productos del carrito o vacio si no hay o es invalido.
+ * Arreglo con los productos del carrito almacenado; devuelve un arreglo vacío si no hay datos, son inválidos o no existe el objeto window.
  */
+
 export function getCart() {
   if (typeof window === "undefined") return [];
   const raw = localStorage.getItem(CART_KEY);
@@ -43,20 +46,23 @@ export function getCart() {
 }
 
 /**
- * Guarda el carrito en localStorage y notifica a la app que cambió.
- * @param {Array<{id:string, nombre:string, precio:number, cantidad:number}>} cart Carrito a guardar
- * @returns {void} No devuelve ningún valor; persiste el carrito y dispara el evento de cambio.
+ * Guarda el carrito en localStorage y notifica a la aplicación que el carrito fue actualizado.
+ * @param {Array<{id:string, nombre:string, precio:number, cantidad:number}>} cart Carrito a persistir.
+ * @returns {void} No devuelve ningún valor; almacena el carrito en localStorage y emite el evento de cambio del carrito.
  */
+
 function saveCart(cart) {
   localStorage.setItem(CART_KEY, JSON.stringify(cart));
   dispatchCartChange(cart); // acá avisamos que cambió
 }
 
 /**
- * Agrega un producto al carrito. Si ya existe el mismo id, suma la cantidad.
- * @param {{id:string, nombre:string, precio:number, cantidad?:number}} param0 Datos del producto
- * @returns {Array<{id:string, nombre:string, precio:number, cantidad:number}>} Carrito actualizado
+ * Agrega un producto al carrito. Si el producto ya existe, incrementa su cantidad.
+ * @param {{id:string, nombre:string, precio:number, cantidad?:number}} param0 Datos del producto a agregar.
+ * @returns {Array<{id:string, nombre:string, precio:number, cantidad:number}>}
+ * Arreglo que representa el carrito actualizado luego de agregar el producto o de aumentar su cantidad si ya existía.
  */
+
 export function addToCart({ id, nombre, precio, cantidad = 1 }) {
   const cart = getCart();
   const existing = cart.find((item) => item.id === id);
@@ -70,12 +76,14 @@ export function addToCart({ id, nombre, precio, cantidad = 1 }) {
 }
 
 /**
- * Actualiza la cantidad de un producto del carrito.
- * Si la cantidad es 0 o menor, elimina el producto.
- * @param {string} id Id del producto
- * @param {number} nuevaCantidad Cantidad nueva a setear
- * @returns {Array<{id:string, nombre:string, precio:number, cantidad:number}>} Carrito actualizado
+ * Actualiza la cantidad de un producto dentro del carrito.
+ * Si la nueva cantidad es menor o igual a 0, el producto se elimina del carrito.
+ * @param {string} id Id del producto a modificar.
+ * @param {number} nuevaCantidad Nueva cantidad a asignar al producto.
+ * @returns {Array<{id:string, nombre:string, precio:number, cantidad:number}>}
+ * Arreglo que representa el carrito actualizado; si la cantidad es menor o igual a 0, el producto es removido y el arreglo resultante no lo incluye.
  */
+
 export function updateQuantity(id, nuevaCantidad) {
   const cart = getCart();
   const item = cart.find((i) => i.id === id);
@@ -92,10 +100,12 @@ export function updateQuantity(id, nuevaCantidad) {
 }
 
 /**
- * Elimina un producto del carrito por id.
- * @param {string} id Id del producto a eliminar
- * @returns {Array<{id:string, nombre:string, precio:number, cantidad:number}>} Carrito actualizado
+ * Elimina un producto del carrito con su id
+ * @param {string} id Id del producto a eliminar.
+ * @returns {Array<{id:string, nombre:string, precio:number, cantidad:number}>}
+ * Arreglo que representa el carrito actualizado luego de remover el producto con el id indicado.
  */
+
 export function removeFromCart(id) {
   const cart = getCart().filter((i) => i.id !== id);
   saveCart(cart);
@@ -103,19 +113,21 @@ export function removeFromCart(id) {
 }
 
 /**
- * Vacía por completo el carrito.
- * @returns {Array<never>} Carrito vacío
+ * Vacía completamente el carrito, eliminando todos los productos almacenados.
+ * @returns {Array<never>} Arreglo vacío que representa un carrito sin productos luego de ser limpiado.
  */
+
 export function clearCart() {
   saveCart([]);
   return [];
 }
 
 /**
- * Devuelve la cantidad total de unidades en el carrito
- * (no la cantidad de productos distintos).
- * @returns {number} Total de unidades
+ * Calcula la cantidad total de unidades presentes en el carrito.
+ * No representa la cantidad de productos distintos, sino la suma de las cantidades de cada producto.
+ * @returns {number} Número total de unidades en el carrito; devuelve 0 si el carrito está vacío.
  */
+
 export function getCartItems() {
   const cart = getCart() || [];
   return cart.reduce((total, item) => total + (item.cantidad || 0), 0);
@@ -137,17 +149,15 @@ export function getCartItems() {
  */
 
 /**
- * Valida una cantidad para el carrito.
- * - Debe ser número
- * - Debe ser >= 1
- * - Debe ser <= 10
- *
- * @param {number} cantidad Cantidad que ingresó el usuario.
- * @returns {{ok: boolean, message: string, value: number}} Resultado de la validación.
- * - ok: true si es válida.
- * - message: texto de error listo para mostrar.
- * - value: cantidad normalizada (por ejemplo, 1 si puso 0, o 10 si puso 999).
+ * Valida la cantidad ingresada por el usuario para el carrito.
+ * La cantidad debe ser numérica y estar dentro del rango permitido.
+ * @param {number} cantidad Cantidad ingresada por el usuario.
+ * @returns {{ok: boolean, message: string, value: number}}
+ * Objeto con el resultado de la validación: ok indica si la cantidad es válida,
+ * message contiene un mensaje de error listo para mostrar cuando no es válida,
+ * y value devuelve la cantidad normalizada dentro de los límites permitidos.
  */
+
 export function validateCartQuantity(cantidad) {
   // normalizamos
   const value = Number(cantidad);
@@ -194,13 +204,12 @@ export function validateCartQuantity(cantidad) {
 // src/javascript/searchService.js
 
 /**
- * Devuelve la ruta a la que hay que ir según el texto buscado.
- * Acepta cosas como "inicio", "home", "menu", "hamburguesas", "sucursales".
- * Si no reconoce, manda al menú.
- *
- * @param {string} term Texto ingresado por el usuario.
- * @returns {string} Ruta de React (ej. "/menu").
+ * Determina la ruta de navegación según el texto ingresado por el usuario.
+ * Reconoce términos comunes asociados a las distintas secciones de la aplicación.
+ * @param {string} term Texto ingresado por el usuario en la búsqueda.
+ * @returns {string} Ruta de React Router correspondiente al término buscado; si no se reconoce ninguna coincidencia, devuelve la ruta del menú por defecto.
  */
+
 export function getRouteFromSearch(term) {
   const q = term.trim().toLowerCase();
 
@@ -214,12 +223,13 @@ export function getRouteFromSearch(term) {
 }
 
 /**
- * Maneja la búsqueda del usuario en React, resolviendo la ruta
- * y navegando con la función de react-router.
- *
- * @param {string} search Texto ingresado por el usuario.
- * @param {(path:string) => void} navigate Función de navegación (useNavigate).
+ * Maneja la búsqueda del usuario resolviendo la ruta correspondiente
+ * y realizando la navegación mediante React Router.
+ * @param {string} search Texto ingresado por el usuario en la búsqueda.
+ * @param {(path:string) => void} navigate Función de navegación provista por react-router.
+ * @returns {void} No devuelve ningún valor; solo ejecuta la navegación hacia la ruta resuelta.
  */
+
 export function handleSearch(search, navigate) {
   const route = getRouteFromSearch(search);
   navigate(route);
