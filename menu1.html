@@ -28,6 +28,9 @@
     <header>
     <div class="container-hero">
       <div class="container hero">
+        
+        <!-- control k c para comentar -->
+         <!-- soporte al cliente -->
         <div class="customer-support">
             <img class="icon-headset" src="img/auriculares-con-microfono.png" alt="Soporte al cliente" />
             <div class="content-customer-support">
@@ -36,15 +39,18 @@
           </div>
         </div>
 
+        <!-- titulo  -->
+
         <div class="container-logo">
           <img src="img/hamburguer.png" alt="Logo empresa" />
           <h1 class="logo"><a href="index.html">La Mistica</a></h1>
         </div>
 
+        <!-- carrito boton -->
+
         <div class="container-user">
           <img src="img/user.png" alt="Usuario" />
-
-          <div class="content-shopping-cart" onclick="location.href='carrito1.html'" role="link" tabindex="0">
+          <div class="content-shopping-cart comprar" onclick="location.href='carrito1.html'" role="link" tabindex="0">
             <img src="img/shopping-cart.png" alt="Carrito de compras" />
             <span class="text">Carrito</span>
             <span class="number-products" aria-live="polite">0</span>
@@ -54,23 +60,22 @@
     </div>
 
     <nav class="container-navbar">
-        <nav class="navbar container">
-        <img src="img/menu.png" alt="Abrir menú" />
-
-      <ul class="menu">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="menu1.html" aria-current="page">Hamburguesas</a></li>
-        <li><a href="sucursales1.html">Dónde encontrarnos</a></li>
-      </ul>
-
-      <form class="search-form">
-        <label for="buscar-lupa3">Buscar...</label>
-      <input id="buscar-lupa3" type="search" />
-    <button class="btn-search">
-      <img src="img/lupa.png" alt="Buscar" />
-    </button>
-      </form>
+      <div class="navbar container">
+        <img src="img/menu.png" alt="Abrir menú" id="btn-menu" class="nodisplay" />
+        <ul class="menu">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="menu1.html">Hamburguesas</a></li>
+          <li><a href="sucursales1.html">Dónde encontrarnos</a></li>
+        </ul>
+        <form class="search-form">
+          <label for="buscar-lupa2">Buscar...</label>
+          <input id="buscar-lupa2"type="search"/>
+          <button class="btn-search">
+            <img src="img/lupa.png" alt="Buscar" />
+          </button>
+        </form>
     </div>
+    </nav>
   </header>
 
   <!-- FIN DEL HEADER -->

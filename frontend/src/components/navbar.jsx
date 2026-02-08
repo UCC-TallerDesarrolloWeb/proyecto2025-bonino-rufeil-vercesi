@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { getCartItems } from "@js/javascript.js";
 import { useEffect, useState } from "react";
 
-import { getRouteFromSearch, handleSearch } from "@js/javascript.js";
+import { handleSearch } from "@js/javascript.js";
 
 
 import hamburguer from "@assets/hamburguer.png";

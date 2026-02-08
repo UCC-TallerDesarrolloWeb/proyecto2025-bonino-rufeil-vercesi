@@ -7,6 +7,7 @@ const CART_KEY = "cart-la-mistica";
  * Dispara un evento global ("cart:changed") cada vez que el carrito cambia.
  * Lo usan componentes como el Navbar para actualizar el contador en vivo.
  * @param {Array<{id:string, nombre:string, precio:number, cantidad:number}>} cart Carrito actualizado
+ * @returns {void} No devuelve ningún valor; solo emite el evento "cart:changed" con el carrito y el total de unidades.
  */
 function dispatchCartChange(cart) {
   if (typeof window !== "undefined") {
@@ -22,10 +23,12 @@ function dispatchCartChange(cart) {
   }
 }
 
+
 /**
  * Lee el carrito desde localStorage.
  * Si no hay nada o el JSON está corrupto, devuelve [].
  * @returns {Array<{id:string, nombre:string, precio:number, cantidad:number}>}
+ * Devulve un array con los productos del carrito o vacio si no hay o es invalido.
  */
 export function getCart() {
   if (typeof window === "undefined") return [];
@@ -34,7 +37,7 @@ export function getCart() {
   try {
     return JSON.parse(raw);
   } catch (e) {
-    console.error("Carrito corrupto, lo reinicio");
+    console.error("Carrito fallado, ", e);
     return [];
   }
 }
@@ -42,6 +45,7 @@ export function getCart() {
 /**
  * Guarda el carrito en localStorage y notifica a la app que cambió.
  * @param {Array<{id:string, nombre:string, precio:number, cantidad:number}>} cart Carrito a guardar
+ * @returns {void} No devuelve ningún valor; persiste el carrito y dispara el evento de cambio.
  */
 function saveCart(cart) {
   localStorage.setItem(CART_KEY, JSON.stringify(cart));
