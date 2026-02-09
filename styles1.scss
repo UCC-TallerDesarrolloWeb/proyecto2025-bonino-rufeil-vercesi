@@ -486,7 +486,7 @@ $dark-color: #1a1a1a;
     font-family: inherit;
     padding: 0 2rem;
     font-size: 1.4rem;
-    width: 25rem;
+    width: 75%;
     color: #777;
     cursor: pointer;
 }
@@ -494,10 +494,12 @@ $dark-color: #1a1a1a;
 .search-form input::-webkit-search-cancel-button{
     appearance: none;
 }
+
+
+
 .search-form .btn-search{
-    
     border: none;
-    display: flex;
+    display: inline;
     align-items: center;
     justify-content: center;
     height: 100%;

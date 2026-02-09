@@ -247,9 +247,11 @@ export function initSearchNavigation() {
       window.location.href = 'menu1.html';
     } else if (value === 'carrito' || value === 'carrito de compras') {
       window.location.href = 'carrito1.html';
-    } else if (value === 'donde encontrarnos' || value === 'dónde encontrarnos') {
+    } else if (value === 'donde encontrarnos' || value === 'sucursales') {
       window.location.href = 'sucursales1.html';
-    } else {
+    } else if (value === 'comprar') {
+      window.location.href = 'menu1.html';
+    }else {
       alert('No se encontró la página para: ' + value);
     }
   });
